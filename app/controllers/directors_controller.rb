@@ -13,4 +13,14 @@ class DirectorsController < ApplicationController
 
 
   end
+
+  def youngest
+    @director_records.dob
+    
+    render({template: "director_templates/youngest"})
+  end
+
+  def oldest
+  end
+
 end
