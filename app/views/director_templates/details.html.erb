@@ -24,3 +24,29 @@
   <dd><%=@director_records.updated_at%></dd>
 
 </dl>
+
+<h1>Filmography</h1>
+
+
+<% matching_movies = Movie.where({director_id: @director_records.id})%>
+
+<table border = '1'>
+  <tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Director</th>
+    <th>More information</th> 
+  </tr>
+  <% matching_movies.each do |i| %>
+    <tr>
+      <td><%=i.id%></td>
+      <td><img src="<%=i.image%>" alt="<%=i.image%>" width='100'></td>
+      <td><%=i.title%></td>
+      <td><%=i.year%></td>
+      <td><%=@director_records.name%></td>
+      <td><a href="/movies/<%=i.id%>"> Show Details </a></td>
+    </tr>
+  <% end %>
+</table>
