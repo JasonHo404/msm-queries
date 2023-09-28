@@ -15,12 +15,17 @@ class DirectorsController < ApplicationController
   end
 
   def youngest
-    @director_records.dob
+    @x = Director.maximum(:dob)
+    @y = Director.find_by_dob(@x)
     
     render({template: "director_templates/youngest"})
   end
 
-  def oldest
+  def eldest
+    @x = Director.minimum(:dob)
+    @y = Director.find_by_dob(@x)
+    
+    render({template: "director_templates/eldest"})
   end
 
 end
